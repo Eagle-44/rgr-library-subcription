@@ -65,126 +65,27 @@
       <table id="bookTable">
         <thead>
           <tr>
-            <th>Title</th>
-            <th><button class="sortButton" data-sort="author">Author</button></th>
-            <th><button class="sortButton" data-sort="genre">Genre</button></th>
-            <th>Status</th>
+            <th data-column="title">Title</th>
+            <th data-column="author">Author</th>
+            <th data-column="genre">Genre</th>
+            <th data-column="status">Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-sort="title">To Kill a Mockingbird</td>
-            <td data-sort="author">Harper Lee</td>
-            <td data-sort="genre">Fiction</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">1984</td>
-            <td data-sort="author">George Orwell</td>
-            <td data-sort="genre">Science Fiction</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">The Great Gatsby</td>
-            <td data-sort="author">F. Scott Fitzgerald</td>
-            <td data-sort="genre">Classic</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">Pride and Prejudice</td>
-            <td data-sort="author">Jane Austen</td>
-            <td data-sort="genre">Romance</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">The Catcher in the Rye</td>
-            <td data-sort="author">J.D. Salinger</td>
-            <td data-sort="genre">Coming-of-age fiction</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">To Kill a Kingdom</td>
-            <td data-sort="author">Alexandra Christo</td>
-            <td data-sort="genre">Fantasy</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">The Hunger Games</td>
-            <td data-sort="author">Suzanne Collins</td>
-            <td data-sort="genre">Young Adult</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">The Hobbit</td>
-            <td data-sort="author">J.R.R. Tolkien</td>
-            <td data-sort="genre">Fantasy</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">The Da Vinci Code</td>
-            <td data-sort="author">Dan Brown</td>
-            <td data-sort="genre">Mystery</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
-          <tr>
-            <td data-sort="title">Harry Potter and the Sorcerer's Stone</td>
-            <td data-sort="author">J.K. Rowling</td>
-            <td data-sort="genre">Fantasy</td>
-            <td data-sort="status">Available</td>
-            <td>
-                <button class="descriptionButton">Description</button>
-                <button class="rentButton">Rent</button>
-            </td>
-          </tr>
+          
         </tbody>
       </table>
     </section>
 
 <!-- Modal information about book-->
-    <div id="descriptionModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Book Description</h2>
-          <div id="bookDescription"></div>
-        </div>
+    <div id="bookDescriptionModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeBookDescriptionModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <div id="modalContent"></div>
       </div>
+    </div>
   </main>
 
   <footer>
@@ -199,5 +100,8 @@
 
   <script src="/js/home.js"></script>
   <script src="/js/registration.js"></script>
+  <script src="/js/bookTable.js"></script>
+  <script src="/js/modalBookDescription.js"></script>
+
 </body>
 </html>
