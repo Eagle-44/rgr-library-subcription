@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  #financialStatus h2,
+  #depositWindow h2 {
+    margin-top: 0;
+  }
+  
+  #depositWindow {
+    display: none;
+    margin-top: 20px;
+  }
+  
+  #depositForm input,
+  #depositForm button {
+    margin: 10px 0;
+  }
+ 
+ 
+  
