@@ -78,6 +78,24 @@
       </table>
     </section>
 
+    <aside id="rentBookAside">
+      <h2>Rent Book</h2>
+      <div>
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" readonly>
+      </div>
+      <div>
+        <label for="rentDuration">Rent Duration (in days):</label>
+        <input type="number" id="rentDuration" min="1" required>
+      </div>
+      <div>
+        <label for="rentCost">Rent Cost:</label>
+        <input type="text" id="rentCost" readonly>
+      </div>
+      <button id="rentSubmitButton">Rent Book</button>
+      <button type="button" id="cancelRentButton">Cancel</button>
+    </aside>
+
 <!-- Modal information about book-->
     <div id="bookDescriptionModal" class="modal">
       <div class="modal-content">
@@ -98,7 +116,6 @@
     </div>
   </footer>
 
-  <script src="/js/home.js"></script>
   <script src="/js/registration.js"></script>
   <script src="/js/bookTable.js"></script>
   <script src="/js/modalBookDescription.js"></script>

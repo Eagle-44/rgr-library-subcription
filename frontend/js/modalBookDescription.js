@@ -1,3 +1,4 @@
+//Some simulated test data 
 const bookDescriptionData = {
     1: {
       title: "Book 1",
@@ -23,6 +24,18 @@ const bookDescriptionData = {
       isRented: true,
       returnDate: "2021-06-01",
     },
+    6: {
+      title: "Book 6",
+      author: "Author B",
+      pages: 2550,
+      genre: "Genre T",
+      pledgeCost: 15.0,
+      rentalDefaultCost: 6.0,
+      rentalExtraDayPrice: 1.5,
+      inServiceSince: "2021-02-01",
+      isRented: true,
+      returnDate: "2021-06-01",
+    },
   };
   
   document.addEventListener("DOMContentLoaded", function() {
@@ -40,7 +53,7 @@ const bookDescriptionData = {
   function openBookDescriptionModal(bookId) {
     const bookDescription = bookDescriptionData[bookId];
   
-    /*
+    /* when will have api --> replace with my
     fetch(`/api/book/${bookId}`)
       .then(response => response.json())
       .then(data => {

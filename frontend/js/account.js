@@ -1,4 +1,11 @@
-// Get elements
+
+
+
+// Account page for refactoring (For Musya)
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
 const depositButton = document.getElementById('depositButton');
 const depositWindow = document.getElementById('depositWindow');
 const depositForm = document.getElementById('depositForm');
@@ -17,9 +24,7 @@ depositForm.addEventListener('submit', (e) => {
     return;
   }
   
-  // Perform deposit operation using your backend logic here
-  // For example, you can make an AJAX request to the server to update the account balance
-
+  
   // Clear the input field and hide the deposit window
   depositForm.reset();
   depositWindow.style.display = 'none';
