@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Library Subscription</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Online Library Subscription</h1>
+    <div class="separator"></div>
+    <!-- Registration and Login Form -->
+    <form id="loginForm" class="login-form">
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div class="separator"></div>
+    <section id="registrationForm">
+        <h2>User Registration</h2>
+        <button type="registrationButton" id="registrationButton">Registration Form</button>
+        <form id="userRegistrationForm" class="hidden">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="form-group">
+            <label for="userCategoryName">User Category Name</label>
+            <select id="userCategoryName" name="userCategoryName" required>
+              <option value="">Choose a category...</option>
+              <option value="Category 1">Category 1</option>
+              <option value="Category 2">Category 2</option>
+              <option value="Category 3">Category 3</option>
+              <option value="Category 4">Category 4</option>
+              <option value="Category 5">Category 5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="userCategoryDiscount">User Category Discount</label>
+            <input type="number" step="0.01" id="userCategoryDiscount" name="userCategoryDiscount" required>
+          </div>
+          <button type="submit">Register</button>
+          <button type="button" id="cancelButton">Cancel</button>
+        </form>
+      </section>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/home.html">Home</a></li>
+      <li><a href="/user_account.html">Account</a></li>
+      <li><a href="/admin_page.html">Admin Page</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Home page and some description -->
+    <section id="homePage">
+      <h2>Welcome to the Online Library!</h2>
+      <p>Explore our collection of books.</p>
+    </section>
+
+    <!-- Book List -->
+    <section id="bookList">
+      <h2>Book List</h2>
+      <table id="bookTable">
+        <thead>
+          <tr>
+            <th data-column="title">Title</th>
+            <th data-column="author">Author</th>
+            <th data-column="genre">Genre</th>
+            <th data-column="status">Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </section>
+
+    <aside id="rentBookAside">
+      <h2>Rent Book</h2>
+      <div>
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" readonly>
+      </div>
+      <div>
+        <label for="rentDuration">Rent Duration (in days):</label>
+        <input type="number" id="rentDuration" min="1" required>
+      </div>
+      <div>
+        <label for="rentCost">Rent Cost:</label>
+        <input type="text" id="rentCost" readonly>
+      </div>
+      <button id="rentSubmitButton">Rent Book</button>
+      <button type="button" id="cancelRentButton">Cancel</button>
+    </aside>
+
+<!-- Modal information about book-->
+    <div id="bookDescriptionModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeBookDescriptionModal()">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; Created by students of the IR-31 group</p>
+    <div class="student-names">
+      <p>Oleksandr Humeniuk</p>
+      <p>Danylo Patana</p>
+      <p>Maksym Androsyuk</p>
+      <p>Vitaliy Musyanovych</p>
+    </div>
+  </footer>
+
+  <script src="/js/registration.js"></script>
+  <script src="/js/bookTable.js"></script>
+  <script src="/js/modalBookDescription.js"></script>
+
+</body>
+</html>
