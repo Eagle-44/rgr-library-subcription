@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const addBookButton = document.getElementById("addBookButton");
     const deleteBookButton = document.getElementById("deleteBookButton");
     const monthlyReportButton = document.getElementById("monthlyReportButton");
+    const returnBookButton = document.getElementById("returnBookButton");
     const catalogSelect = document.getElementById("catalogSelect");
     const catalogTable = document.getElementById("catalogTable");
   
@@ -17,9 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Monthly report button click event handler
     monthlyReportButton.addEventListener("click", function() {
-      // Logic for generating monthly report
+      
       // Redirect to the monthly report page
       window.location.href = "monthly_report.html";
+    });
+
+    
+    returnBookButton.addEventListener("click", function() {
+      
+      // Redirect to the return book page
+      window.location.href = "return_book_page.html";
     });
   
     // Catalog select change event handler
@@ -38,5 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
         catalogTable.innerHTML = "<thead><tr><th>User ID</th><th>Name</th><th>Overdue Books</th></tr></thead><tbody><tr><td>1</td><td>John Doe</td><td>Book 1</td></tr><tr><td>2</td><td>Jane Smith</td><td>Book 3</td></tr></tbody>";
       }
     });
+
   });
   

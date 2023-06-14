@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
     registrationForm.addEventListener("submit", function(event) {
       event.preventDefault();
   
-      // Get form values and create a new user object
-  
-      // Perform further actions
-  
       // Reset the form and hide it
       registrationForm.reset();
       registrationForm.classList.add("hidden");

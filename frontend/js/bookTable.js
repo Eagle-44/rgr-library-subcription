@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const bookTable = document.getElementById("bookTable");
     let bookData = [];
   
-    // fetch("your-backend-api-endpoint")
+    // fetch("my-backend-api-endpoint")
     //   .then(response => response.json())
     //   .then(data => {
     //     bookData = data;
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //     console.error("Error fetching book data:", error);
     //   });
   
-    // Simulated book data
+    // Simulated test book data
     bookData = [
       { title: "Book 1", author: "Author C", genre: "Genre B", status: "Available", id: 1 },
       { title: "Book 2", author: "Author A", genre: "Genre A", status: "Available", id: 2 },
@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function() {
           <td>${book.author}</td>
           <td>${book.genre}</td>
           <td>${book.status}</td>
-          <td><button class="bookDescriptionButton" data-id="${book.id}">View Description</button></td>
+          <td><button class="bookDescriptionButton" data-id="${book.id}">View Description</button>
+          <button class="rentBookButton" data-title="${book.title}">Rent Book</button></td>
         `;
         tableBody.appendChild(row);
       });
@@ -74,4 +75,36 @@ document.addEventListener("DOMContentLoaded", function() {
       renderBookTable(sortedData);
       bookData = sortedData;
     }
+
+
+      // Event listener for rent book buttons
+      bookTable.addEventListener("click", function(event) {
+        if (event.target.classList.contains("rentBookButton")) {
+          const bookTitle = event.target.getAttribute("data-title");
+          document.getElementById("bookTitle").value = bookTitle;
+          document.getElementById("rentDuration").value = "";
+          document.getElementById("rentCost").value = "";
+
+          document.getElementById("rentBookAside").style.display = "block";
+        }
+      });
+
+        // Event listener for rent submit button
+      document.getElementById("rentSubmitButton").addEventListener("click", function() {
+        const rentDuration = document.getElementById("rentDuration").value;
+        const bookTitle = document.getElementById("bookTitle").value;
+
+        // Send the rent request to the backend and update the book status
+
+        // Reset the form and close the aside
+        document.getElementById("rentBookAside").style.display = "none";
+      });
+
+      document.getElementById("cancelRentButton").addEventListener("click", function() {
+        closeRentBookAside();
+      });
+      
+      function closeRentBookAside() {
+        document.getElementById("rentBookAside").style.display = "none";
+      }
   });
