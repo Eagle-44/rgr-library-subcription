@@ -1,0 +1,25 @@
+#monthSelection {
+    margin-bottom: 20px;
+  }
+  
+  #monthSelection h3 {
+    margin-bottom: 10px;
+  }
+  
+  #monthSelect {
+    width: 200px;
+  }
+  
+  #reportContent table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #reportContent th,
+  #reportContent td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  
