@@ -18,12 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Function to open the book description modal
   function openBookDescriptionModal() {
     bookDescriptionModal.style.display = "block";
   }
 
-  // Function to close the book description modal
   function closeBookDescriptionModal() {
     bookDescriptionModal.style.display = "none";
   }
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
     openBookDescriptionModal();
   }
 
-  // Event listener for closing the book description modal
   document.addEventListener("click", function(event) {
     if (event.target.classList.contains("close")) {
       closeBookDescriptionModal();

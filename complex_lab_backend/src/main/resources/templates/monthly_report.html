@@ -1,46 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Monthly Report</title>
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link rel="stylesheet" type="text/css" href="css/admin_page.css">
+  <title>Monthly Reports</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Montly Report Page</h1>
-  </header>
 
-  <nav>
-    <ul>
-      <li><a href="/admin_page.html">Admin Page</a></li>
-    </ul>
-  </nav>
+<header>
+  <h1>Montly Report Page</h1>
+</header>
 
-  <main>
-    <section id="monthlyReportPage">
-      <h2>Monthly Report</h2>
-      <div id="reportContainer">
-        <div id="monthSelection">
-          <h3>Select Month:</h3>
-          <select id="monthSelect"></select>
-        </div>
-        <div id="reportContent">
-          <!-- Table will be dynamically populated here -->
-        </div>
-      </div>
-    </section>
-  </main>
+<nav>
+  <ul>
+    <li><a href="/admin_page.html">Admin Page</a></li>
+  </ul>
+</nav>
+<div id="monthly-reports">
+  <table id="monthly-reports-table">
+    <tr>
+      <th>ID</th>
+      <th>Month</th>
+      <th>Library Income</th>
+      <th>Average Loan Income</th>
+      <th>Average User Income</th>
+      <th>Books Issued</th>
+      <th>New Books</th>
+      <th>Books Withdrawn</th>
+      <th>Library ID</th>
+    </tr>
+  </table>
+</div>
 
-  <footer>
-    <p>&copy; Created by students of the IR-31 group</p>
-    <div class="student-names">
-      <p>Oleksandr Humeniuk</p>
-      <p>Danylo Patana</p>
-      <p>Maksym Androsyuk</p>
-      <p>Vitaliy Musyanovych</p>
-    </div>
-  </footer>
+<script>
+  // Функція для створення рядка таблиці з даними
+  function createTableRow(report) {
+    const row = document.createElement('tr');
 
-  <script src="/js/report.js"></script>
+    const idCell = document.createElement('td');
+    idCell.textContent = report.id;
+    row.appendChild(idCell);
+
+    const monthCell = document.createElement('td');
+    monthCell.textContent = report.month;
+    row.appendChild(monthCell);
+
+    const libraryIncomeCell = document.createElement('td');
+    libraryIncomeCell.textContent = report.libraryIncome;
+    row.appendChild(libraryIncomeCell);
+
+    const averageLoanIncomeCell = document.createElement('td');
+    averageLoanIncomeCell.textContent = report.averageLoanIncome;
+    row.appendChild(averageLoanIncomeCell);
+
+    const averageUserIncomeCell = document.createElement('td');
+    averageUserIncomeCell.textContent = report.averageUserIncome;
+    row.appendChild(averageUserIncomeCell);
+
+    const booksIssuedCell = document.createElement('td');
+    booksIssuedCell.textContent = report.booksIssued;
+    row.appendChild(booksIssuedCell);
+
+    const newBooksCell = document.createElement('td');
+    newBooksCell.textContent = report.newBooks;
+    row.appendChild(newBooksCell);
+
+    const booksWithdrawnCell = document.createElement('td');
+    booksWithdrawnCell.textContent = report.booksWithdrawn;
+    row.appendChild(booksWithdrawnCell);
+
+    const libraryIdCell = document.createElement('td');
+    libraryIdCell.textContent = report.libraryId;
+    row.appendChild(libraryIdCell);
+
+    return row;
+  }
+
+  // Виконання HTTP-запиту та обробка результатів
+  fetch('http://localhost:8080/monthly_reports')
+          .then(response => response.json())
+          .then(reports => {
+            const table = document.getElementById('monthly-reports-table');
+            const tableBody = document.createElement('tbody');
+
+            reports.forEach(report => {
+              const row = createTableRow(report);
+              tableBody.appendChild(row);
+            });
+
+            table.appendChild(tableBody);
+          })
+          .catch(error => {
+            console.error('Error fetch data:', error);
+          });
+</script>
 </body>
 </html>

@@ -1,11 +1,3 @@
-
-
-
-// Account page for refactoring (For Musya)
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
 const depositButton = document.getElementById('depositButton');
 const depositWindow = document.getElementById('depositWindow');
 const depositForm = document.getElementById('depositForm');

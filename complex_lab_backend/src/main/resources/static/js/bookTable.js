@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error fetching book data:", error);
       });
 
-  // Render the initial book table
   renderBookTable(bookData);
 
   // Sort the table column on header click
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Event listener for book description buttons
   bookTable.addEventListener("click", function(event) {
     if (event.target.classList.contains("bookDescriptionButton")) {
       const bookId = event.target.dataset.id;
@@ -34,40 +32,38 @@ document.addEventListener("DOMContentLoaded", function() {
   // Event listener for rent book buttons
   bookTable.addEventListener("click", function(event) {
     if (event.target.classList.contains("rentBookButton")) {
-      const bookTitle = event.target.getAttribute("data-title");
-      document.getElementById("bookTitle").value = bookTitle;
-      document.getElementById("rentDuration").value = "";
-      document.getElementById("rentCost").value = "";
-
       document.getElementById("rentBookAside").style.display = "block";
+      document.getElementById("bookTitle").value = event.target.getAttribute("data-title");
+      document.getElementById("rentSubmitButton").addEventListener("click", function() {
+        const days = document.getElementById("rentDuration").value;
+        const bookId = event.target.getAttribute("data-title");
+        document.getElementById("bookTitle").value = bookId;
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId =  1;
+
+        // Send the rent request to the backend and update the book status
+        fetch("http://localhost:8080/loans", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({userId, bookId,days})
+        })
+            .then(response => response.json())
+            .then(data => {
+              // Handle the response data as needed
+              console.log("Rent request successful");
+            })
+            .catch(error => {
+              console.error("Error sending rent request:", error);
+            });
+
+        // Reset the form and close the aside
+        document.getElementById("rentBookAside").style.display = "none";
+      });
     }
   });
 
-  // Event listener for rent submit button
-  document.getElementById("rentSubmitButton").addEventListener("click", function() {
-    const rentDuration = document.getElementById("rentDuration").value;
-    const bookTitle = document.getElementById("bookTitle").value;
-
-    // Send the rent request to the backend and update the book status
-    fetch("http://localhost:8080/books/{id}", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ bookTitle, rentDuration })
-    })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response data as needed
-          console.log("Rent request successful");
-        })
-        .catch(error => {
-          console.error("Error sending rent request:", error);
-        });
-
-    // Reset the form and close the aside
-    document.getElementById("rentBookAside").style.display = "none";
-  });
 
   document.getElementById("cancelRentButton").addEventListener("click", function() {
     closeRentBookAside();
@@ -79,16 +75,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
     data.forEach(book => {
       const row = document.createElement("tr");
-      row.innerHTML = `
+      if (!localStorage.getItem('user')) {
+        row.innerHTML = `
         <td>${book.name}</td>
         <td>${book.author}</td>
         <td>${book.genre}</td>
         <td>${book.isRented}</td>
         <td>
           <button class="bookDescriptionButton" data-id="${book.id}">View Description</button>
-          <button class="rentBookButton" data-title="${book.name}">Rent Book</button>
         </td>
       `;
+      }else {
+        row.innerHTML = `
+        <td>${book.name}</td>
+        <td>${book.author}</td>
+        <td>${book.genre}</td>
+        <td>${book.isRented}</td>
+        <td>
+          <button class="bookDescriptionButton" data-id="${book.id}">View Description</button>
+          <button id="rentBookButtonId" class="rentBookButton" data-title="${book.id}">Rent Book</buttonid>
+        </td>
+      `;
+      }
+
       tableBody.appendChild(row);
     });
   }
